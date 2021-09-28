@@ -18,15 +18,18 @@
             <img id="profile-img" class="profile-img-card" src="img/logo.jpg" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="nome" class="form-control" placeholder="Nome" required autofocus>
-                <input type="password" id="senha" class="form-control" placeholder="Senha" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Lembre-se de mim
-                    </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
+                <div hey-toaster class="unifiPortalToastContainer">
+                    <div class="unifiPortalToast unifiPortalToast--{{toast.level}}">
+                      <div ng-class="{'ubnt-icon--info': toast.level == 'default', 'ubnt-icon--check-circle': toast.level == 'success', 'ubnt-icon--eye2': toast.level == 'warning', 'ubnt-icon--alert': toast.level == 'danger'}" class="unifiPortalToast__icon icon"></div>
+                      <div class="unifiPortalToast__content">
+                        <div class="unifiPortalToastBody">
+                          <p class="noMarginBottom">{{toast.message}}</p>
+                        </div>
+                      </div>
+                      <div class="unifiPortalToast__close"><a ng-click="toast.close()" class="icon ubnt-icon--x"></a></div>
+                    </div>
+                  </div>
+                  <div ui-view></div>
             </form>
             <a href="#" class="forgot-password">
                 Esqueceu a senha?
